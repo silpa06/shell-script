@@ -4,4 +4,4 @@ read -s USERNAME
 echo "enter your password"
 read -s PASSWD
 echo "your user name is $USERNAME"
-echo "your passwd is ${PASSWD}
+echo "your passwd is ${PASSWD}"
