@@ -13,7 +13,7 @@ else
     exit 1
 fi
 
-FILES=$(find $SOURCE_DIR -name "*.log" -mtimes +14)
+FILES=$(find $SOURCE_DIR -name "*.log" -mtime +14)
 if [ -z FILES ]
 then
     echo "no files older than 14 days"
