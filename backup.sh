@@ -1,3 +1,4 @@
+#!/bin/bash
 SOURCE_DIR=$1
 DESTINATION_DIR=$2
 DAYS=${3:-14}
@@ -28,7 +29,7 @@ FILES=$(find $SOURCE_DIR -name "*.log" -mtime +$DAYS)
 
 if [ ! -z $FILES ]
 then
-    echo "Files are found: $FILES"
+    echo "Files are found:"
     ZIPFILE="$DESTINATION_DIR/app-logs-$TIMESTAMP.zip"
     find $SOURCE_DIR -name "*.log" -mtime +$DAYS | zip $ZIPFILE -@
     if [ -f $ZIPFILE ]
