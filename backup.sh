@@ -33,7 +33,7 @@ if [ ! -z $FILES ]
 then
     echo "Files are found:"
     ZIPFILE="$DESTINATION_DIR/app-logs-$TIMESTAMP.zip"
-    find $SOURCE_DIR -name "*.log" -mtime +$DAYS | zip $ZIPFILE -@
+    find $SOURCE_DIR -name "*.log" -mtime +$DAYS | zip "$ZIPFILE" -@
     if [ -f $ZIPFILE ]
     then  
         echo "successfully zipped the files older than $DAYS"
@@ -48,5 +48,6 @@ then
     fi
 else
     echo "no files older than $DAYS"
+    exit 1
 fi
 
