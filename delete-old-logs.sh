@@ -14,10 +14,15 @@ else
 fi
 
 FILES=$(find $SOURCE_DIR -name "*.log" -mtimes +14)
-echo "files: $FILES"
-
-while ISF= read -r file
-do
-    echo "deleting the file: $file"
-    rm -rf $file
-done <<< $FILES
+if [ -z FILES ]
+then
+    echo "no files older than 14 days"
+    exit 1
+else
+    echo "files: $FILES"
+    while ISF= read -r file
+    do
+        echo "deleting the file: $file"
+        rm -rf $file
+    done <<< $FILES
+fi 
