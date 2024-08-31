@@ -24,13 +24,13 @@ else
     echo "destination directory is exist"
 fi
 
-FILES=$(find $SOURCE_DIR -name "*.log" -mtimes +$DAYS)
+FILES=$(find $SOURCE_DIR -name "*.log" -mtime +$DAYS)
 
 if [ ! -z $FILES ]
 then
     echo "Files are found: $FILES"
     ZIPFILE="$DESTINATION_DIR/app-logs-$TIMESTAMP.zip"
-    find $SOURCE_DIR -name "*.log" -mtimes +$DAYS | zip $ZIPFILE -@
+    find $SOURCE_DIR -name "*.log" -mtime +$DAYS | zip $ZIPFILE -@
     if [ -f $ZIPFILE ]
     then  
         echo "successfully zipped the files older than $DAYS"
@@ -46,4 +46,4 @@ then
 else
     echo "no files older than $DAYS"
 fi
-    
+
